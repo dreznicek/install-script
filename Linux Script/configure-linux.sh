@@ -573,6 +573,10 @@ string=\"<%pri%>%protocol-version% %timestamp:::date-rfc3339% %HOSTNAME% %app-na
 
 # Send messages to Loggly over TCP using the template.
 action(type=\"omfwd\" protocol=\"tcp\" target=\"$LOGS_01_HOST\" port=\"$LOGGLY_SYSLOG_PORT\" template=\"LogglyFormat\" StreamDriver=\"gtls\" StreamDriverMode=\"1\" StreamDriverAuthMode=\"x509/name\" StreamDriverPermittedPeers=\"*.loggly.com\")
+
+# provides UDP syslog reception
+$ModLoad imudp
+$UDPServerRun 514
   "
 
   inputStr_NO_TLS="
