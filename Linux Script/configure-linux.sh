@@ -610,8 +610,10 @@ installTLSDependencies() {
   if [ $LOGGLY_TLS_SENDING == "true" ]; then
     downloadTlsCerts
     if [ "$SUPPRESS_PROMPT" == "true" ]; then
+      /bin/bash -c "sudo $PKG_MGR update"
       /bin/bash -c "sudo $PKG_MGR install -y rsyslog-gnutls"
     else
+      /bin/bash -c "sudo $PKG_MGR update"
       /bin/bash -c "sudo $PKG_MGR install rsyslog-gnutls"
     fi
     if [ "$PKG_MGR" == "yum" ]; then
